@@ -1,4 +1,6 @@
+import 'package:astro_world/kisiler.dart';
 import 'package:astro_world/renkler.dart';
+import 'package:astro_world/transit_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:anim_search_bar/anim_search_bar.dart';
 //import 'package:flutter-gen/gen_l10n/app_localizations.dart';
@@ -59,29 +61,77 @@ class _AnasayfaState extends State<Anasayfa> {
                 style: TextStyle(fontSize: 28, color: anaRenk, fontWeight: FontWeight.bold),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 16, bottom: 24),
-                child: Image.asset(
-                  "resimler/mainBirthChart.png",
-                  width: 200,
-                  height: 180,
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  child: Row(
+                    children: [
+                      RaisedButton(
+                        child: Text(
+                          "Chart of the Moment",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => transitChart()));
+                        },
+                        color: Colors.indigo[900],
+                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4, bottom: 15),
+                child: Container(
+                  height: 150,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.asset(
+                        "resimler/currentSky.png",
+                        width: 150,
+                        height: 200,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Image.asset(
+                          "resimler/mainBirthChart.png",
+                          width: 150,
+                          height: 135,
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  TextButton(
-                    onPressed: () {
-                      print("Birth Chart");
-                    },
+                  RaisedButton(
                     child: Text(
                       "Birth Chart",
-                      // style: TextStyle(color: yaziRenk1),
+                      style: TextStyle(color: Colors.blue),
                     ),
-                    style: TextButton.styleFrom(
-                      backgroundColor: anaRenk,
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                    ),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Kisiler()));
+                    },
+                    color: Colors.indigo[900],
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
                   ),
+                  // TextButton(
+                  //   onPressed: () {
+                  //     print("Birth Chart");
+                  //   },
+                  //   child: Text(
+                  //     "Birth Chart",
+                  //     // style: TextStyle(color: yaziRenk1),
+                  //   ),
+                  //   style: TextButton.styleFrom(
+                  //     backgroundColor: anaRenk,
+                  //     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                  //   ),
+                  // ),
                   TextButton(
                     onPressed: () {
                       print("Birth Chart");
@@ -218,7 +268,9 @@ class _AnasayfaState extends State<Anasayfa> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(
+                  top: 5,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -247,7 +299,6 @@ class _AnasayfaState extends State<Anasayfa> {
         ));
   }
 }
-
 
 //  Ders Çalışma
 // class Chip extends StatelessWidget {
